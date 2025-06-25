@@ -1,6 +1,4 @@
 
-
-```markdown
 # Shodan Edge
 
 Shodan Edge is a Chrome extension for bug bounty hunters to streamline Shodan queries by combining a base query with multiple target domains and opening filtered results in new tabs.
