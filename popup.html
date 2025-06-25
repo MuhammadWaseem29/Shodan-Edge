@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shodan Edge</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="icon.png" alt="Shodan Edge Logo" width="40" height="40">
+        <h1>Shodan Edge</h1>
+      </div>
+      <div class="header-actions">
+        <button id="theme-toggle" title="Toggle Dark/Light Mode" aria-label="Toggle Dark/Light Mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="settings-toggle" title="Show Settings" aria-label="Show Settings">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="input-group">
+        <label for="base-query">
+          <i class="fas fa-search"></i> Base Shodan Query
+        </label>
+        <input type="text" id="base-query" placeholder="e.g., cpe:'cpe:2.3:o:paloaltonetworks:pan-os'" autocomplete="off" aria-describedby="base-query-hint">
+        <small id="base-query-hint" class="hint">Enter your Shodan query to filter results (e.g., specific software or OS).</small>
+      </section>
+      <section class="input-group">
+        <label for="domains">
+          <i class="fas fa-globe"></i> Target Domains (one per line)
+        </label>
+        <textarea id="domains" rows="6" placeholder="nasa.gov
+sony.com
+*.tesla.com" aria-describedby="domains-textarea-hint"></textarea>
+        <small id="domains-textarea-hint" class="hint">List domains to filter; supports wildcards (*). One domain per line.</small>
+      </section>
+      <div class="action-buttons">
+        <button id="generate-btn" title="Generate and open Shodan queries">
+          <i class="fas fa-rocket"></i> Filter & Open
+        </button>
+        <button id="clear-btn" title="Clear input fields" aria-label="Clear fields">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+      <section id="recent-queries" class="recent-list" aria-label="Recent Queries">
+        <h2>Recent Queries</h2>
+        <ul id="query-list" class="history"></ul>
+      </section>
+      <p id="status" class="status" role="alert"></p>
+    </main>
+    <div id="settings-panel" class="settings-panel hidden" aria-label="Settings">
+      <h3>Settings</h3>
+      <div class="settings-item">
+        <label for="tab-delay">
+          <i class="fas fa-clock"></i> Tab Delay (ms)
+        </label>
+        <input type="number" id="tab-delay" min="500" max="5000" value="1500" aria-describedby="tab-delay-hint">
+        <small id="tab-delay-hint" class="hint">Set delay between opening tabs (500–5000 ms).</small>
+      </div>
+      <button id="save-settings" title="Save settings" aria-label="Save settings">Save</button>
+    </div>
+    <footer>
+      <p>v1.2 | Built for Bug Bounty Hunters</p>
+    </footer>
+  </div>
+  <div id="tooltip" class="tooltip" role="tooltip"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
